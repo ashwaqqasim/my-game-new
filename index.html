@@ -27,11 +27,10 @@
         background-color: #000;
       }
 
-      /* For smaller devices like iPhone */
       @media (max-width: 768px) {
         #unity-canvas {
-          width: 375px;  /* Fixed width for iPhone */
-          height: 667px; /* Fixed height for iPhone */
+          width: 375px;
+          height: 667px;
         }
       }
     </style>
@@ -61,6 +60,11 @@
         localStorage.setItem('SelectedCharacter', character);
       }
 
+      // ÏÇáÉ áÇÓÊÑÌÇÚ ÇáÔÎÕíÉ ãä LocalStorage
+      function loadProfile() {
+        return localStorage.getItem('SelectedCharacter');
+      }
+
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/WEB2.loader.js";
       var config = {
@@ -74,8 +78,7 @@
         productVersion: "0.1",
         showBanner: unityShowBanner,
       };
-   
-      // Check for mobile devices (iPhone, Android)
+
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
         meta.name = 'viewport';
@@ -90,18 +93,6 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        // ÇÓÊÑÌÇÚ ÇáÔÎÕíÉ
-        loadProfile((character) => {
-          console.log("Selected Character: " + character);
-          
-          // ÅÐÇ ßÇäÊ ÇáÔÎÕíÉ ãæÌæÏÉ Ýí LocalStorage¡ äÞæã ÈÅÚÏÇÏåÇ Ýí Unity
-          if (character && character !== "null") {
-            console.log("Character found in localStorage: " + character);
-            // Þã ÈÊãÑíÑ ÇáÔÎÕíÉ Åáì Unity Ãæ ÖÈØ ÇááÚÈÉ ÈäÇÁð ÚáíåÇ
-            // íãßä ÅÖÇÝÉ ÃßæÇÏ åäÇ áÊÎÕíÕ ÇááÚÈÉ ÈäÇÁð Úáì ÇáÔÎÕíÉ ÇáãÎÊÇÑÉ
-          }
-        });
-
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
         }).then((unityInstance) => {
@@ -118,5 +109,6 @@
     </script>
   </body>
 </html>
+
 
 
