@@ -117,6 +117,27 @@
       };
 
       document.body.appendChild(script);
+
+      // JavaScript functions to save and load profile from LocalStorage
+      function saveProfile(character) {
+        localStorage.setItem('SelectedCharacter', character);
+      }
+
+      function loadProfile() {
+        return localStorage.getItem('SelectedCharacter');
+      }
+
+      // Load the selected profile when the game starts
+      window.onload = function() {
+        var selectedCharacter = loadProfile();
+        if (selectedCharacter) {
+          console.log("Loaded character from LocalStorage: " + selectedCharacter);
+          // Do something with the selected character (like updating the UI)
+        } else {
+          console.log("No character found in LocalStorage. Defaulting to default.");
+          // Use a default character or set it to "boy" or "girl"
+        }
+      }
     </script>
   </body>
 </html>
