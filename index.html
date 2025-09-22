@@ -96,10 +96,16 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        // ÇÓÊÎÏÇã loadProfile áÇÓÊÑÌÇÚ ÇáÔÎÕíÉ ãä LocalStorage
+        // ÇÓÊÑÌÇÚ ÇáÔÎÕíÉ
         loadProfile((character) => {
           console.log("Selected Character: " + character);
-          // åäÇ íÊã ÇÓÊÎÏÇã ÇáÜ character Ýí Unity ÅÐÇ ßÇä ãæÌæÏðÇ
+          
+          // ÅÐÇ ßÇäÊ ÇáÔÎÕíÉ ãæÌæÏÉ Ýí LocalStorage¡ äÞæã ÈÅÚÏÇÏåÇ Ýí Unity
+          if (character && character !== "null") {
+            console.log("Character found in localStorage: " + character);
+            // Þã ÈÊãÑíÑ ÇáÔÎÕíÉ Åáì Unity Ãæ ÖÈØ ÇááÚÈÉ ÈäÇÁð ÚáíåÇ
+            // íãßä ÅÖÇÝÉ ÃßæÇÏ åäÇ áÊÎÕíÕ ÇááÚÈÉ ÈäÇÁð Úáì ÇáÔÎÕíÉ ÇáãÎÊÇÑÉ
+          }
         });
 
         createUnityInstance(canvas, config, (progress) => {
@@ -118,5 +124,3 @@
     </script>
   </body>
 </html>
-
-
