@@ -64,6 +64,10 @@
       function loadProfile() {
         return localStorage.getItem('SelectedCharacter');
       }
+      function loadProfile(callback) {
+    var character = localStorage.getItem('SelectedCharacter');
+    callback(character);  // «” —Ã«⁄ «·‘Œ’Ì… ⁄»— callback
+}
 
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/WEB2.loader.js";
