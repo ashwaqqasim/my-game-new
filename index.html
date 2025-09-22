@@ -19,9 +19,19 @@
         overflow: hidden;
       }
 
+      /* Default canvas size for all devices */
       #unity-canvas {
-        width: 375px;  /* Fixed width for iPhone */
-        height: 667px; /* Fixed height for iPhone */
+        width: 100%;
+        height: 100%;
+        object-fit: contain;  /* Makes sure the canvas maintains its aspect ratio */
+      }
+
+      /* Fixed size for iPhone devices */
+      @media (max-width: 768px) {
+        #unity-canvas {
+          width: 375px;  /* Fixed width for iPhone */
+          height: 667px; /* Fixed height for iPhone */
+        }
       }
     </style>
   </head>
