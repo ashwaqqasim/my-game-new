@@ -61,12 +61,6 @@
         localStorage.setItem('SelectedCharacter', character);
       }
 
-      // œ«·… ·«” —Ã«⁄ «·‘Œ’Ì… „‰ LocalStorage
-      function loadProfile(callback) {
-        var character = localStorage.getItem('SelectedCharacter');
-        callback(character); //  „—Ì— «·‘Œ’Ì… «·„” —Ã⁄… ≈·Ï «·‹ callback
-      }
-
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/WEB2.loader.js";
       var config = {
@@ -80,7 +74,7 @@
         productVersion: "0.1",
         showBanner: unityShowBanner,
       };
-
+   
       // Check for mobile devices (iPhone, Android)
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
